@@ -1,5 +1,6 @@
 <?php
 require_once './libraries/database.php';
+require_once './libraries/utils.php';
 /**
  * CE FICHIER DOIT ENREGISTRER UN NOUVEAU COMMENTAIRE EST REDIRIGER SUR L'ARTICLE !
  *
@@ -70,5 +71,4 @@ $query = $pdo->prepare('INSERT INTO comments SET author = :author, content = :co
 $query->execute(compact('author', 'content', 'article_id'));
 
 // 4. Redirection vers l'article en question :
-header('Location: article.php?id=' . $article_id);
-exit();
+redirect('article.php?id=' . $article_id);

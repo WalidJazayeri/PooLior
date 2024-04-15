@@ -1,5 +1,6 @@
 <?php
 require_once './libraries/database.php';
+require_once './libraries/utils.php';
 /**
  * DANS CE FICHIER ON CHERCHE A SUPPRIMER LE COMMENTAIRE DONT L'ID EST PASSE EN PARAMETRE GET !
  *
@@ -49,5 +50,4 @@ $query->execute(['id' => $id]);
 /**
  * 5. Redirection vers l'article en question
  */
-header("Location: article.php?id=" . $article_id);
-exit();
+redirect('article.php?id=' . $article_id);
