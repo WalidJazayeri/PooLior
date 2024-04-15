@@ -7,5 +7,6 @@ function render(string $path, array $variables = []){
     $pageContent = ob_get_clean();
 
     require('templates/layout.html.php');
+    echo "test";
 }
 ?>
