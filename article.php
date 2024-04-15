@@ -2,12 +2,12 @@
 
 /**
  * CE FICHIER DOIT AFFICHER UN ARTICLE ET SES COMMENTAIRES !
- * 
+ *
  * On doit d'abord récupérer le paramètre "id" qui sera présent en GET et vérifier son existence
  * Si on n'a pas de param "id", alors on affiche un message d'erreur !
- * 
+ *
  * Sinon, on va se connecter à la base de données, récupérer les commentaires du plus ancien au plus récent (SELECT * FROM comments WHERE article_id = ?)
- * 
+ *
  * On va ensuite afficher l'article puis ses commentaires
  */
 
@@ -32,10 +32,10 @@ if (!$article_id) {
  * Attention, on précise ici deux options :
  * - Le mode d'erreur : le mode exception permet à PDO de nous prévenir violament quand on fait une connerie ;-)
  * - Le mode d'exploitation : FETCH_ASSOC veut dire qu'on exploitera les données sous la forme de tableaux associatifs
- * 
+ *
  * PS : Vous remarquez que ce sont les mêmes lignes que pour l'index.php ?!
  */
-$pdo = new PDO('mysql:host=localhost;dbname=blogpoo;charset=utf8', 'root', '', [
+$pdo = new PDO('mysql:host=localhost;dbname=u854470974_cours_poo;charset=utf8', 'u854470974_walid', 'Uhm#v&3Fd', [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 ]);
@@ -47,7 +47,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=blogpoo;charset=utf8', 'root', '', [
  */
 $query = $pdo->prepare("SELECT * FROM articles WHERE id = :article_id");
 
-// On exécute la requête en précisant le paramètre :article_id 
+// On exécute la requête en précisant le paramètre :article_id
 $query->execute(['article_id' => $article_id]);
 
 // On fouille le résultat pour en extraire les données réelles de l'article
@@ -62,7 +62,7 @@ $query->execute(['article_id' => $article_id]);
 $commentaires = $query->fetchAll();
 
 /**
- * 5. On affiche 
+ * 5. On affiche
  */
 $pageTitle = $article['title'];
 ob_start();
