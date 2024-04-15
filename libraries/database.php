@@ -8,5 +8,5 @@ function getPdo(): PDO
 
     return $pdo;
 }
-echo 'test';
+echo 'test2';
 ?>
