@@ -13,12 +13,10 @@
  * - Le mode d'erreur : le mode exception permet à PDO de nous prévenir violament quand on fait une connerie ;-)
  * - Le mode d'exploitation : FETCH_ASSOC veut dire qu'on exploitera les données sous la forme de tableaux associatifs
  */
-$pdo = new PDO('mysql:host=localhost;dbname=blogpoo;charset=utf8', 'root', '', [
+$pdo = new PDO('mysql:host=localhost;dbname=u854470974_cours_poo;charset=utf8', 'u854470974_walid', 'O3ph9F8#l', [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 ]);
-
-die('test');
 
 /**
  * 2. Récupération des articles
