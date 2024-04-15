@@ -2,15 +2,15 @@
 
 /**
  * CE FICHIER DOIT ENREGISTRER UN NOUVEAU COMMENTAIRE EST REDIRIGER SUR L'ARTICLE !
- *
+ * 
  * On doit d'abord vérifier que toutes les informations ont été entrées dans le formulaire
  * Si ce n'est pas le cas : un message d'erreur
  * Sinon, on va sauver les informations
- *
+ * 
  * Pour sauvegarder les informations, ce serait bien qu'on soit sur que l'article qu'on essaye de commenter existe
  * Il faudra donc faire une première requête pour s'assurer que l'article existe
  * Ensuite on pourra intégrer le commentaire
- *
+ * 
  * Et enfin on pourra rediriger l'utilisateur vers l'article en question
  */
 
@@ -48,14 +48,14 @@ if (!$author || !$article_id || !$content) {
  * 2. Vérification que l'id de l'article pointe bien vers un article qui existe
  * Ca nécessite une connexion à la base de données puis une requête qui va aller chercher l'article en question
  * Si rien ne revient, la personne se fout de nous.
- *
+ * 
  * Attention, on précise ici deux options :
  * - Le mode d'erreur : le mode exception permet à PDO de nous prévenir violament quand on fait une connerie ;-)
  * - Le mode d'exploitation : FETCH_ASSOC veut dire qu'on exploitera les données sous la forme de tableaux associatifs
- *
- * PS : Ca fait pas genre 3 fois qu'on écrit ces lignes pour se connecter ?!
+ * 
+ * PS : Ca fait pas genre 3 fois qu'on écrit ces lignes pour se connecter ?! 
  */
-$pdo = new PDO('mysql:host=localhost;dbname=u854470974_cours_poo;charset=utf8', 'u854470974_walid', 'Uhm#v&3Fd', [
+$pdo = new PDO('mysql:host=localhost;dbname=blogpoo;charset=utf8', 'root', '', [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 ]);
