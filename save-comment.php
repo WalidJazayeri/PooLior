@@ -1,5 +1,5 @@
 <?php
-
+require_once './libraries/database.php';
 /**
  * CE FICHIER DOIT ENREGISTRER UN NOUVEAU COMMENTAIRE EST REDIRIGER SUR L'ARTICLE !
  *
@@ -55,10 +55,7 @@ if (!$author || !$article_id || !$content) {
  *
  * PS : Ca fait pas genre 3 fois qu'on écrit ces lignes pour se connecter ?!
  */
-$pdo = new PDO('mysql:host=localhost;dbname=u854470974_cours_poo;charset=utf8', 'u854470974_walid', 'O3ph9F8#l', [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-]);
+$pdo = getPdo();
 
 $query = $pdo->prepare('SELECT * FROM articles WHERE id = :article_id');
 $query->execute(['article_id' => $article_id]);
