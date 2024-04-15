@@ -18,6 +18,8 @@ $pdo = new PDO('mysql:host=localhost;dbname=u854470974_cours_poo;charset=utf8', 
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 ]);
 
+die('test');
+
 /**
  * 2. Récupération des articles
  */
