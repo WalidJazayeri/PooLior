@@ -3,17 +3,19 @@ namespace Controllers;
 require_once './libraries/utils.php';
 require_once './libraries/models/Article.php';
 require_once './libraries/models/Comment.php';
-class Article
+require_once './libraries/controllers/Controller.php';
+class Article extends Controller
 {
+    protected $modelName = \Models\Article::class;
+
     public function index()
     {
-        $articleModel = new \Models\Article();
 
 
         /**
          * 2. Récupération des articles
          */
-        $articles = $articleModel->findAll("created_at DESC");
+        $articles = $this->model->findAll("created_at DESC");
 
         /**
          * 3. Affichage
@@ -24,7 +26,6 @@ class Article
 
     public function show()
     {
-        $articleModel = new \Models\Article();
         $commentModel = new \Models\Comment();
 
 
@@ -46,7 +47,7 @@ class Article
 
         //  3. Récupération de l'article en question
 
-        $article = $articleModel->find($article_id);
+        $article = $this->model->find($article_id);
 
         /**
          * 4. Récupération des commentaires de l'article en question
@@ -63,7 +64,6 @@ class Article
 
     public function delete()
     {
-        $articleModel = new \Models\Article();
 
 
         /**
@@ -81,7 +81,7 @@ class Article
          * 3. Vérification que l'article existe bel et bien
          */
 
-        $article = $articleModel->find($id);
+        $article = $this->model->find($id);
         if (!$article) {
             die("L'article $id n'existe pas, vous ne pouvez donc pas le supprimer !");
         }
@@ -89,7 +89,7 @@ class Article
         /**
          * 4. Réelle suppression de l'article
          */
-        $articleModel->delete($id);
+        $this->model->delete($id);
 
 
         /**
