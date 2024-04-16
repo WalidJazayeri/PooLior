@@ -1,19 +1,11 @@
 <?php
 require_once './libraries/database.php';
 require_once './libraries/utils.php';
-/**
- * CE FICHIER DOIT ENREGISTRER UN NOUVEAU COMMENTAIRE EST REDIRIGER SUR L'ARTICLE !
- *
- * On doit d'abord vérifier que toutes les informations ont été entrées dans le formulaire
- * Si ce n'est pas le cas : un message d'erreur
- * Sinon, on va sauver les informations
- *
- * Pour sauvegarder les informations, ce serait bien qu'on soit sur que l'article qu'on essaye de commenter existe
- * Il faudra donc faire une première requête pour s'assurer que l'article existe
- * Ensuite on pourra intégrer le commentaire
- *
- * Et enfin on pourra rediriger l'utilisateur vers l'article en question
- */
+require_once './libraries/models/Article.php';
+require_once './libraries/models/Comment.php';
+
+$articleModel = new Article();
+$commentModel = new Comment();
 
 /**
  * 1. On vérifie que les données ont bien été envoyées en POST
@@ -45,7 +37,7 @@ if (!$author || !$article_id || !$content) {
     die("Votre formulaire a été mal rempli !");
 }
 
-$article = findArticle($article_id);
+$article = $articleModel->find($article_id);
 
 // Si rien n'est revenu, on fait une erreur
 if (!$article) {
@@ -53,6 +45,6 @@ if (!$article) {
 }
 
 // 3. Insertion du commentaire
-insertComment($author, $content, $article_id);
+$commentModel->insert($author, $content, $article_id);
 // 4. Redirection vers l'article en question :
 redirect('article.php?id=' . $article_id);

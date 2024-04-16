@@ -1,6 +1,9 @@
 <?php
 require_once './libraries/database.php';
 require_once './libraries/utils.php';
+require_once './libraries/models/Article.php';
+
+$articleModel = new Article();
 
 
 /**
@@ -18,7 +21,7 @@ $id = $_GET['id'];
  * 3. Vérification que l'article existe bel et bien
  */
 
-$article = findArticle($id);
+$article = $articleModel->find($id);
 if (!$article) {
     die("L'article $id n'existe pas, vous ne pouvez donc pas le supprimer !");
 }
@@ -26,7 +29,7 @@ if (!$article) {
 /**
  * 4. Réelle suppression de l'article
  */
-deleteArticle($id);
+$articleModel->delete($id);
 
 
 /**

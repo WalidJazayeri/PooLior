@@ -1,14 +1,15 @@
 <?php
 require_once './libraries/database.php';
 require_once './libraries/utils.php';
+require_once './libraries/models/Article.php';
 
-
+$articleModel = new Article();
 
 
 /**
  * 2. Récupération des articles
  */
-$articles = findAllArticles();
+$articles = $articleModel->findAll();
 
 /**
  * 3. Affichage
