@@ -26,7 +26,7 @@ function findAllArticles() : array
 /**
  * Retourne l'article donné par l'id en paramètre
  */
-function findArticle(int $id): array
+function findArticle(int $id)
 {
     $pdo = getPdo();
     $query = $pdo->prepare("SELECT * FROM articles WHERE id = :article_id");
@@ -59,5 +59,39 @@ function deleteArticle(int $id) : void
     $pdo = getPdo();
     $query = $pdo->prepare('DELETE FROM articles WHERE id = :id');
     $query->execute(['id' => $id]);
+}
+
+/**
+ * Retrouve un commentaire
+ * @param int $id id du commentaire
+ */
+function findComment($id)
+{
+    $pdo = getPdo();
+    $query = $pdo->prepare('SELECT * FROM comments WHERE id = :id');
+    $query->execute(['id' => $id]);
+    $comment = $query ->fetch();
+    return $comment;
+}
+
+/**
+ * Supprime le commentaire
+ * @param int $id id du commentaire
+ */
+function deleteComment(int $id) : void
+{
+    $pdo = getPdo();
+    $query = $pdo->prepare('DELETE FROM comments WHERE id = :id');
+    $query->execute(['id' => $id]);
+}
+
+/**
+ * Inserer un commentaire
+ */
+function insertComment(string $author, string $content, int $article_id) : void
+{
+    $pdo = getPdo();
+    $query = $pdo->prepare('INSERT INTO comments SET author = :author, content = :content, article_id = :article_id, created_at = NOW()');
+    $query->execute(compact('author', 'content', 'article_id'));
 }
 ?>
