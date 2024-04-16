@@ -1,14 +1,8 @@
 <?php
 require_once './libraries/database.php';
-class Comment
+require_once './libraries/models/Model.php';
+class Comment extends Model
 {
-    private $pdo;
-
-    public function __construct()
-    {
-        $this->pdo = getPdo();
-    }
-
     /**
      * Récupère tout les commentaire d'un article donné
      */
