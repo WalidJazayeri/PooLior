@@ -39,6 +39,9 @@ function findArticle(int $id): array
     return $article;
 }
 
+/**
+ * Récupère tout les commentaire d'un article donné
+ */
 function findAllComents(int $article_id) : array
 {
     $pdo = getPdo();
@@ -46,5 +49,15 @@ function findAllComents(int $article_id) : array
     $query->execute(['article_id' => $article_id]);
     $commentaires = $query->fetchAll();
     return $commentaires;
+}
+
+/**
+ * Supprime un article
+ */
+function deleteArticle(int $id) : void
+{
+    $pdo = getPdo();
+    $query = $pdo->prepare('DELETE FROM articles WHERE id = :id');
+    $query->execute(['id' => $id]);
 }
 ?>
