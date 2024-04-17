@@ -1,7 +1,5 @@
 <?php
 namespace Controllers;
-require_once './libraries/utils.php';
-
 class Comment extends Controller
 {
     protected $modelName = \Models\Comment::class;
@@ -50,7 +48,7 @@ class Comment extends Controller
         // 3. Insertion du commentaire
         $this->model->insert($author, $content, $article_id);
         // 4. Redirection vers l'article en question :
-        redirect('article.php?id=' . $article_id);
+        \Http::redirect('article.php?id=' . $article_id);
     }
 
     public function delete()
@@ -65,15 +63,6 @@ class Comment extends Controller
         $id = $_GET['id'];
 
 
-        /**
-         * 2. Connexion à la base de données avec PDO
-         * Attention, on précise ici deux options :
-         * - Le mode d'erreur : le mode exception permet à PDO de nous prévenir violament quand on fait une connerie ;-)
-         * - Le mode d'exploitation : FETCH_ASSOC veut dire qu'on exploitera les données sous la forme de tableaux associatifs
-         *
-         * PS : Vous remarquez que ce sont les mêmes lignes que pour l'index.php ?!
-         */
-        $pdo = getPdo();
         /**
          * 3. Vérification de l'existence du commentaire
          */
@@ -94,7 +83,7 @@ class Comment extends Controller
         /**
          * 5. Redirection vers l'article en question
          */
-        redirect('article.php?id=' . $article_id);
+        \Http::redirect('article.php?id=' . $article_id);
     }
 }
 ?>

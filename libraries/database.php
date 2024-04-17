@@ -1,6 +1,9 @@
 <?php
 require_once './libraries/connec.php';
-function getPdo(): PDO
+
+class Database
+{
+    public static function getPdo(): PDO
 {
     $pdo = new PDO('mysql:host=localhost;dbname='.DSN.';charset=utf8', ''.USER.'', ''.PASS.'', [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -9,4 +12,6 @@ function getPdo(): PDO
 
     return $pdo;
 }
+}
+
 ?>
