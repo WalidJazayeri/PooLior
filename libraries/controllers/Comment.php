@@ -48,7 +48,7 @@ class Comment extends Controller
         // 3. Insertion du commentaire
         $this->model->insert($author, $content, $article_id);
         // 4. Redirection vers l'article en question :
-        \Utils\Http::redirect('article.php?id=' . $article_id);
+        \Utils\Http::redirect('index.php?controller=article&task=show&id=' . $article_id);
     }
 
     public function delete()
@@ -83,7 +83,7 @@ class Comment extends Controller
         /**
          * 5. Redirection vers l'article en question
          */
-        \Utils\Http::redirect('article.php?id=' . $article_id);
+        \Utils\Http::redirect('index.php?controller=article&task=show&id=' . $article_id);
     }
 }
 ?>
