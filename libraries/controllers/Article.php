@@ -17,7 +17,7 @@ class Article extends Controller
          * 3. Affichage
          */
         $pageTitle = "Accueil";
-        \Renderer::render('articles/index', compact('pageTitle', 'articles'));
+        \Utils\Renderer::render('articles/index', compact('pageTitle', 'articles'));
     }
 
     public function show()
@@ -55,7 +55,7 @@ class Article extends Controller
          * 5. On affiche
          */
         $pageTitle = $article['title'];
-        \Renderer::render('articles/show', compact('pageTitle', 'article', 'commentaires', 'article_id'));
+        \Utils\Renderer::render('articles/show', compact('pageTitle', 'article', 'commentaires', 'article_id'));
     }
 
     public function delete()
@@ -91,7 +91,7 @@ class Article extends Controller
         /**
          * 5. Redirection vers la page d'accueil
          */
-        \Http::redirect('index.php');
+        \Utils\Http::redirect('index.php');
     }
 
 }

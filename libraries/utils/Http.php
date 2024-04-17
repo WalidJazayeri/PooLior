@@ -1,4 +1,5 @@
 <?php
+namespace Utils;
 Class Http
 {
         /**

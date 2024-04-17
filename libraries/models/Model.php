@@ -8,7 +8,7 @@ abstract class Model
 
     public function __construct()
     {
-        $this->pdo = \Database::getPdo();
+        $this->pdo = \Utils\Database::getPdo();
     }
 
     /**

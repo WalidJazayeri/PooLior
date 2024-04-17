@@ -1,4 +1,8 @@
 <?php
+namespace Utils;
+
+use PDO;
+
 require_once './libraries/connec.php';
 
 class Database
